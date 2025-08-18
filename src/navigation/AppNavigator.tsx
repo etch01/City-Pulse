@@ -20,7 +20,8 @@ export type AppParams = {
 const Stack = createNativeStackNavigator<AppParams>();
 
 function AppStack() {
- const  token  = useContext(TokenCtx);
+ const  { token }  = useContext(TokenCtx);
+
   return (
     <Stack.Navigator screenOptions={{
       headerShown: false
