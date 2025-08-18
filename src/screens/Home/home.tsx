@@ -3,7 +3,7 @@ import React from 'react'
 
 type Props = {}
 
-const home = (props: Props) => {
+const Home = (props: Props) => {
   return (
     <View>
       <Text>home</Text>
@@ -11,4 +11,4 @@ const home = (props: Props) => {
   )
 }
 
-export default home
+export default Home;
