@@ -14,10 +14,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getEvents, searchEvents } from '../../redux/actions/eventsAction';
 import { Loader, Header } from '../../components';
 import { RootState } from '../../redux/store';
-import EventItem from './EventCard/eventCard';
 import { Icons } from '../../assets/icons';
+import EventItem from './EventCard/eventCard';
 
-const HomeScreen: React.FC = () => {
+interface HomeProps{
+  navigation: any;
+}
+
+const HomeScreen: React.FC<HomeProps> = ({navigation}) => {
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState('keyword');
   const dispatch = useDispatch();
@@ -64,7 +68,9 @@ const HomeScreen: React.FC = () => {
         <FlatList
           data={events}
           keyExtractor={(item) => item.id}
-          renderItem={({item})=><EventItem event={item}/>}
+          renderItem={({item})=><EventItem event={item} onPressEvent={(event)=>navigation.navigate('EventDetails',{
+            event
+          })}/>}
           contentContainerStyle={styles.list}
           initialNumToRender={4}
           maxToRenderPerBatch={4}

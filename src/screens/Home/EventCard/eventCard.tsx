@@ -4,6 +4,7 @@ import {
   View,
   Text,
   Image,
+  TouchableOpacity
 } from 'react-native';
 import { Event } from '../../../redux/interfaces/events';
 import FastImage from 'react-native-fast-image';
@@ -11,6 +12,7 @@ import { Icons } from '../../../assets/icons';
 
 interface EventCardProps{
     event: Partial<Event>;
+    onPressEvent: (event:Partial<Event>)=> void;
 }
 
 
@@ -22,7 +24,7 @@ const eventCard = (props :EventCardProps) => {
   const city = event._embedded?.venues?.[0]?.city?.name ?? '';
 
   return (
-      <View style={styles.card}>
+      <TouchableOpacity style={styles.card} onPress={()=>props.onPressEvent(event)}>
         {imageUrl ? (
           <FastImage
           style={styles.image}
@@ -49,7 +51,7 @@ const eventCard = (props :EventCardProps) => {
             <Text style={styles.type}>{event.type}</Text>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
 }
 

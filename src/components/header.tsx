@@ -24,10 +24,13 @@ export default Header
 
 const styles = StyleSheet.create({
     container:{
-        width: width * 0.92,
+        width: width ,
         alignSelf: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        paddingVertical: 10,
+        paddingHorizontal: 16,
+        backgroundColor: colors.background
     },
     headerTitle:{
         fontSize: 18,

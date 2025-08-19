@@ -11,4 +11,7 @@ export const Icons = {
     profile: {
       src: require("./icons/profile.png")
     },
+    back: {
+      src: require("./icons/back.png")
+    },
 }
