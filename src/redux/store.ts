@@ -9,4 +9,6 @@ const rootReducer = combineReducers({
   const middleware = [thunk];
   const store = createStore(rootReducer, applyMiddleware(...middleware as any));
 
+export type RootState = ReturnType<typeof rootReducer>
+
 export default store;

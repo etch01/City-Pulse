@@ -22,11 +22,6 @@ const Stack = createNativeStackNavigator<AppParams>();
 function AppStack() {
  const  { token }  = useContext(TokenCtx);
 
- useEffect(()=>{
-  console.log(token);
-  
- },[token])
-
   return (
     <Stack.Navigator screenOptions={{
       headerShown: false
