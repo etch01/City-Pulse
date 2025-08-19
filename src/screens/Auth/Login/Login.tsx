@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -9,11 +9,20 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
-import { colors } from '../../../theme/colors';
+import { colors } from "../../../theme/colors";
+import { useLoginViewModel } from '../../../hooks/useLogin';
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {
+    email,
+    password,
+    setEmail,
+    setPassword,
+    loading,
+    error,
+    handleLogin,
+    handleBiometricLogin,
+  } = useLoginViewModel();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -34,10 +43,11 @@ const LoginScreen = () => {
           <TextInput
             style={styles.input}
             placeholder="Email"
-            placeholderTextColor="#999"
+            placeholderTextColor={colors.placeholder}
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
+            autoCapitalize={"none"}
           />
         </View>
 
@@ -46,17 +56,25 @@ const LoginScreen = () => {
           <TextInput
             style={styles.input}
             placeholder="Password"
-            placeholderTextColor="#999"
+            placeholderTextColor={colors.placeholder}
             value={password}
             onChangeText={setPassword}
             secureTextEntry
           />
         </View>
 
+        {/* Show error */}
+        {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
         {/* Login Button */}
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
+        <TouchableOpacity
+          style={[styles.button, loading && { opacity: 0.6 }]}
+          onPress={handleLogin}
+          disabled={loading}
+        >
+          <Text style={styles.buttonText}>
+            {loading ? "Logging in..." : "Login"}
+          </Text>
         </TouchableOpacity>
 
         {/* Sign Up */}
@@ -66,6 +84,11 @@ const LoginScreen = () => {
             <Text style={styles.footerLink}>Sign up</Text>
           </TouchableOpacity>
         </View>
+
+        {/* Biometrics Button */}
+        <TouchableOpacity onPress={handleBiometricLogin} style={{ marginTop: 20 }}>
+          <Text style={styles.footerLink}>Use Biometrics</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
@@ -112,12 +135,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.textPrimary,
   },
-  forgotText: {
-    alignSelf: "flex-end",
-    color: colors.primary,
-    fontWeight: "500",
-    marginBottom: 30,
-  },
   button: {
     width: "100%",
     backgroundColor: colors.primary,
@@ -148,5 +165,10 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 15,
     fontWeight: "600",
+  },
+  errorText: {
+    color: "red",
+    marginBottom: 10,
+    fontSize: 14,
   },
 });

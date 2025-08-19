@@ -13,13 +13,18 @@ export const TokenCtx = createContext<TokenCtxType>({
   unsetToken: () => undefined,
 });
 
-export function saveToken(token: string | undefined) {
+//Best way to store token is not async storage ( for demo only ) but in react-native-keychain or encrypted storage
+export async function saveToken(token: string | undefined) {
   if (!token) {
     return AsyncStorage.removeItem("auth-token");
   }
-  return AsyncStorage.setItem("auth-token", token);
+  return await AsyncStorage.setItem("auth-token", token);
 }
 
-export function retrieveToken() {
-  return AsyncStorage.getItem("auth-token");
+export async function retrieveToken() {
+  return await AsyncStorage.getItem("auth-token");
+}
+
+export async function removeToken() {
+  return await AsyncStorage.removeItem("auth-token");
 }

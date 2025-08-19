@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { BackHandler, Platform, Text } from "react-native";
 import {
   createNavigationContainerRef,
@@ -22,14 +22,19 @@ const Stack = createNativeStackNavigator<AppParams>();
 function AppStack() {
  const  { token }  = useContext(TokenCtx);
 
+ useEffect(()=>{
+  console.log(token);
+  
+ },[token])
+
   return (
     <Stack.Navigator screenOptions={{
       headerShown: false
     }}>
-      {!token ? (
-        <Stack.Screen name="AuthNavigator" component={AuthStackNavigator} />
-      ) : (
+      {token ? (
         <Stack.Screen name="MainNavigator" component={MainStackNavigator} />
+      ) : (
+        <Stack.Screen name="AuthNavigator" component={AuthStackNavigator} />
       )}
     </Stack.Navigator>
   );

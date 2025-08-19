@@ -8,4 +8,5 @@ export const colors = {
     danger: '#E0002A',
     border: '#E9E9E9',
     light: '#FFFFFF',
+    placeholder: '#999'
     };
