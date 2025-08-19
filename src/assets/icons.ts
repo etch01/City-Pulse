@@ -7,5 +7,8 @@ export const Icons = {
     },
     confetti: {
         src: require("./icons/confetti.png")
-      }
+    },
+    profile: {
+      src: require("./icons/profile.png")
+    },
 }

@@ -5,15 +5,17 @@ import {
   SafeAreaView,
   View,
   Pressable,
-  Text
+  Text,
+  Image
 } from 'react-native';
 import { styles } from './styles';
 import { colors } from '../../theme/colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEvents, searchEvents } from '../../redux/actions/eventsAction';
-import { Loader } from '../../components';
+import { Loader, Header } from '../../components';
 import { RootState } from '../../redux/store';
 import EventItem from './EventCard/eventCard';
+import { Icons } from '../../assets/icons';
 
 const HomeScreen: React.FC = () => {
   const [search, setSearch] = useState('');
@@ -38,6 +40,10 @@ const HomeScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header
+       title='Home'
+       right={<Image source={Icons.profile.src as any} style={{width: 25, height: 25}}/>}
+      />
       <View style={styles.seachType}>
         <Pressable style={searchType == 'keyword' ? styles.typeButtonActive: styles.typeButton} onPress={()=>onPressKeyword('keyword')}>
           <Text style={searchType == 'keyword' ? styles.typeTextActive: styles.typeText}>Keyword</Text>
