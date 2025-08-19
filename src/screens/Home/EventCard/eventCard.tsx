@@ -6,7 +6,8 @@ import {
   Image,
 } from 'react-native';
 import { Event } from '../../../redux/interfaces/events';
-import FastImage from 'react-native-fast-image'
+import FastImage from 'react-native-fast-image';
+import { Icons } from '../../../assets/icons';
 
 interface EventCardProps{
     event: Partial<Event>;
@@ -35,9 +36,18 @@ const eventCard = (props :EventCardProps) => {
           <View style={[styles.image, styles.placeholder]} />
         )}
         <View style={styles.cardContent}>
-          <Text style={styles.title}>{event.name}</Text>
-          {city ? <Text style={styles.city}>{city}</Text> : null}
-          <Text style={styles.type}>{event.type}</Text>
+          <View style={styles.row}>
+            <Image source={Icons.event.src} style={styles.cardIcon}/>
+            <Text style={styles.title}>{event.name}</Text>
+          </View>
+          {city ? <View style={styles.row}>
+            <Image source={Icons.location.src} style={styles.cardIcon}/>
+            <Text style={styles.city}>{city}</Text>
+          </View> : null}
+          <View style={styles.row}>
+            <Image source={Icons.confetti.src} style={styles.cardIcon}/>
+            <Text style={styles.type}>{event.type}</Text>
+          </View>
         </View>
       </View>
     );

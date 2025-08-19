@@ -40,16 +40,25 @@ export const styles = StyleSheet.create({
       fontSize: 16,
       fontWeight: '600',
       color: colors.textPrimary,
-      marginBottom: 4,
     },
     city: {
       fontSize: 14,
       color: colors.textSecondary,
-      marginBottom: 4,
     },
     type: {
       fontSize: 12,
       color: colors.primary,
       fontWeight: '500',
     },
+    row:{
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 3,
+      marginBottom: 4,
+
+    },
+    cardIcon:{
+      width:16, 
+      height: 16
+    }
   });
