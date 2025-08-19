@@ -3,33 +3,55 @@ import {
   TextInput,
   FlatList,
   SafeAreaView,
+  View,
+  Pressable,
+  Text
 } from 'react-native';
 import { styles } from './styles';
 import { colors } from '../../theme/colors';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEvents } from '../../redux/actions/eventsAction';
+import { getEvents, searchEvents } from '../../redux/actions/eventsAction';
 import { Loader } from '../../components';
 import { RootState } from '../../redux/store';
 import EventItem from './EventCard/eventCard';
 
 const HomeScreen: React.FC = () => {
   const [search, setSearch] = useState('');
+  const [searchType, setSearchType] = useState('keyword');
   const dispatch = useDispatch();
 
   useEffect(()=>{
     dispatch(getEvents());
   },[])
 
+  const searchEvent = (text: string) =>{
+    setSearch(text)
+    dispatch(searchEvents(text, searchType))
+  }
+
+  const onPressKeyword = (keyword: string) =>{
+    setSearchType(keyword);
+    setSearch('');
+  }
+
   const {isLoadingEvents, error, events} = useSelector((state: RootState) => state.events);  
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.seachType}>
+        <Pressable style={searchType == 'keyword' ? styles.typeButtonActive: styles.typeButton} onPress={()=>onPressKeyword('keyword')}>
+          <Text style={searchType == 'keyword' ? styles.typeTextActive: styles.typeText}>Keyword</Text>
+        </Pressable>
+        <Pressable style={searchType == 'city' ? styles.typeButtonActive : styles.typeButton} onPress={()=>onPressKeyword('city')}>
+          <Text style={searchType == 'city' ? styles.typeTextActive: styles.typeText}>City</Text>
+        </Pressable>
+      </View>
       <TextInput
         placeholder="Search events..."
         placeholderTextColor={colors.placeholder}
         style={styles.search}
         value={search}
-        onChangeText={setSearch}
+        onChangeText={searchEvent}
       />
       {
         isLoadingEvents? <Loader/> :

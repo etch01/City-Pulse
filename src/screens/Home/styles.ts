@@ -6,10 +6,16 @@ export const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: colors.background,
     },
+    seachType:{
+      margin: 16,
+      height: 36,
+      flexDirection: 'row'
+    },
     search: {
       backgroundColor: colors.inputBg,
       padding: 12,
-      margin: 16,
+      marginHorizontal: 16,
+      marginBottom: 16,
       borderRadius: 8,
       fontSize: 16,
       color: colors.textPrimary,
@@ -60,5 +66,24 @@ export const styles = StyleSheet.create({
     cardIcon:{
       width:16, 
       height: 16
+    },
+    typeButton:{
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.border
+    },
+    typeButtonActive:{
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.primary
+    },
+    typeText:{
+      fontWeight: 500
+    },
+    typeTextActive:{
+      color: colors.light,
+      fontWeight: 500
     }
   });
