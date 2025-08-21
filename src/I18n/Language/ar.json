@@ -1,0 +1,19 @@
+{
+    "auth": {
+        "login": "تسجيل الدخول",
+        "welcome": "مرحباً بعودتك",
+        "loginTitle": "سجل الدخول إلى حسابك",
+        "emailPlaceholder": "البريد الإلكتروني",
+        "passwordPlaceholder": "كلمة المرور",
+        "loginLoadingText": "جاري تسجيل الدخول...",
+        "dontHaveAccount": "ليس لديك حساب؟",
+        "signup": "إنشاء حساب",
+        "useBiometrics": "استخدم البصمة"
+    },
+    "home": {
+        "home": "الرئيسية",
+        "keyword": "كلمة مفتاحية",
+        "city": "المدينة",
+        "searchPlaceholder": "ابحث في الفعاليات..."
+    }
+}

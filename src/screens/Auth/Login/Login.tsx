@@ -12,6 +12,7 @@ import {
 import { useLoginViewModel } from '../../../hooks/useLogin';
 import { styles } from './styles'
 import { colors } from "../../../theme/colors";
+import { useTranslation } from "react-i18next";
 
 const LoginScreen = () => {
   const {
@@ -25,6 +26,8 @@ const LoginScreen = () => {
     handleBiometricLogin,
   } = useLoginViewModel();
 
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -36,14 +39,14 @@ const LoginScreen = () => {
         />
 
         {/* Welcome Text */}
-        <Text style={styles.title}>Welcome Back</Text>
-        <Text style={styles.subtitle}>Login to your account</Text>
+        <Text style={styles.title}>{t('auth.welcome')}</Text>
+        <Text style={styles.subtitle}>{t('auth.loginTitle')}</Text>
 
         {/* Email Input */}
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder="Email"
+            placeholder={t('auth.emailPlaceholder')}
             placeholderTextColor={colors.placeholder}
             value={email}
             onChangeText={setEmail}
@@ -56,7 +59,7 @@ const LoginScreen = () => {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder="Password"
+            placeholder={t('auth.passwordPlaceholder')}
             placeholderTextColor={colors.placeholder}
             value={password}
             onChangeText={setPassword}
@@ -74,21 +77,21 @@ const LoginScreen = () => {
           disabled={loading}
         >
           <Text style={styles.buttonText}>
-            {loading ? "Logging in..." : "Login"}
+            {loading ? t('auth.loginLoadingText') : t('auth.login')}
           </Text>
         </TouchableOpacity>
 
         {/* Sign Up */}
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Don’t have an account? </Text>
+          <Text style={styles.footerText}>{t('auth.dontHaveAccount')}</Text>
           <TouchableOpacity>
-            <Text style={styles.footerLink}>Sign up</Text>
+            <Text style={styles.footerLink}>{t('auth.signup')}</Text>
           </TouchableOpacity>
         </View>
 
         {/* Biometrics Button */}
         <TouchableOpacity onPress={handleBiometricLogin} style={{ marginTop: 20 }}>
-          <Text style={styles.footerLink}>Use Biometrics</Text>
+          <Text style={styles.footerLink}>{t('auth.useBiometrics')}</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

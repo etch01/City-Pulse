@@ -15,8 +15,9 @@ import { getEvents, searchEvents } from '../../redux/actions/eventsAction';
 import { Loader, Header } from '../../components';
 import { RootState } from '../../redux/store';
 import { Icons } from '../../assets/icons';
+import { Event } from '../../redux/interfaces/events.ts';
+import { useTranslation } from 'react-i18next';
 import EventItem from './EventCard/eventCard';
-import { Event } from '../../redux/interfaces/events.ts'
 
 interface HomeProps{
   navigation: any;
@@ -26,6 +27,7 @@ const HomeScreen: React.FC<HomeProps> = ({navigation}) => {
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState('keyword');
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   useEffect(()=>{
     dispatch(getEvents());
@@ -58,19 +60,19 @@ const HomeScreen: React.FC<HomeProps> = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <Header
-       title='Home'
+       title={t('home.home')}
        right={<Image source={Icons.profile.src as any} style={{width: 25, height: 25}}/>}
       />
       <View style={styles.seachType}>
         <Pressable style={searchType == 'keyword' ? styles.typeButtonActive: styles.typeButton} onPress={()=>onPressKeyword('keyword')}>
-          <Text style={searchType == 'keyword' ? styles.typeTextActive: styles.typeText}>Keyword</Text>
+          <Text style={searchType == 'keyword' ? styles.typeTextActive: styles.typeText}>{t('home.keyword')}</Text>
         </Pressable>
         <Pressable style={searchType == 'city' ? styles.typeButtonActive : styles.typeButton} onPress={()=>onPressKeyword('city')}>
-          <Text style={searchType == 'city' ? styles.typeTextActive: styles.typeText}>City</Text>
+          <Text style={searchType == 'city' ? styles.typeTextActive: styles.typeText}>{t('home.city')}</Text>
         </Pressable>
       </View>
       <TextInput
-        placeholder="Search events..."
+        placeholder={t('home.searchPlaceholder')}
         placeholderTextColor={colors.placeholder}
         style={styles.search}
         value={search}

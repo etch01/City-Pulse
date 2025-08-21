@@ -1,0 +1,19 @@
+{
+    "auth": {
+        "login": "Login",
+        "welcome": "Welcome Back",
+        "loginTitle": "Login to your account",
+        "emailPlaceholder": "Email",
+        "passwordPlaceholder": "Password",
+        "loginLoadingText": "Logging in...",
+        "dontHaveAccount": "Don’t have an account?",
+        "signup": "Sign up",
+        "useBiometrics": "Use Biometrics"
+    },
+    "home": {
+        "home": "Home",
+        "keyword": "Keyword",
+        "city": "City",
+        "searchPlaceholder": "Search events..."
+    }
+}
