@@ -4,6 +4,7 @@ import { styles } from './styles';
 import { Event } from '../../redux/interfaces/events';
 import { Header } from '../../components';
 import { Icons } from '../../assets/icons';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   navigation: any;
@@ -15,6 +16,8 @@ type Props = {
 };
 
 const EventDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
+  const { t } = useTranslation();
+  
   const { event } = route.params;
   const imageUrl = event.images?.[0]?.url;
   const venue = event._embedded?.venues?.[0];
@@ -24,7 +27,7 @@ const EventDetailsScreen: React.FC<Props> = ({ navigation, route }) => {
 
   return (
     <>
-        <Header title={'Event Details'}
+        <Header title={t('eventDetails.title')}
             left={<Pressable hitSlop={50} onPress={()=>navigation.goBack()}>
                     <Image source={Icons.back.src as any} style={{width: 25, height: 25}}/>
                 </Pressable>}

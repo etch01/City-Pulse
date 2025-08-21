@@ -15,5 +15,15 @@
         "keyword": "Keyword",
         "city": "City",
         "searchPlaceholder": "Search events..."
+    },
+    "eventDetails": {
+        "title": "Event Details"
+    },
+    "profile": {
+        "title": "Profile",
+        "favorites": "Favorites",
+        "signout": "Sign Out",
+        "change": "Change"
+
     }
 }

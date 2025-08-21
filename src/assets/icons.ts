@@ -20,4 +20,13 @@ export const Icons = {
     starOutline: {
       src: require("./icons/star-outline.png")
     },
+    shutdown: {
+      src: require("./icons/shutdown.png")
+    },
+    favorite: {
+      src: require("./icons/favorite.png")
+    },
+    language: {
+      src: require("./icons/language.png")
+    },
 }

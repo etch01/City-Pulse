@@ -61,7 +61,10 @@ const HomeScreen: React.FC<HomeProps> = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Header
        title={t('home.home')}
-       right={<Image source={Icons.profile.src as any} style={{width: 25, height: 25}}/>}
+       right={<Pressable onPress={()=>navigation.navigate("Profile")}>
+          <Image source={Icons.profile.src as any} style={{width: 25, height: 25}}/>
+        </Pressable>
+       }
       />
       <View style={styles.seachType}>
         <Pressable style={searchType == 'keyword' ? styles.typeButtonActive: styles.typeButton} onPress={()=>onPressKeyword('keyword')}>

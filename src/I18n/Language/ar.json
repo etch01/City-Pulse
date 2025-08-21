@@ -15,5 +15,14 @@
         "keyword": "كلمة مفتاحية",
         "city": "المدينة",
         "searchPlaceholder": "ابحث في الفعاليات..."
+    },
+    "eventDetails": {
+        "title": "تفاصيل الحدث"
+    },
+    "profile": {
+        "title": "الصفحه الشخصيه",
+        "favorites": "المفضله",
+        "signout": "تسجيل خروج",
+        "change": "تغيير اللغه"
     }
 }
