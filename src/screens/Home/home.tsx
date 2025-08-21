@@ -16,6 +16,7 @@ import { Loader, Header } from '../../components';
 import { RootState } from '../../redux/store';
 import { Icons } from '../../assets/icons';
 import EventItem from './EventCard/eventCard';
+import { Event } from '../../redux/interfaces/events.ts'
 
 interface HomeProps{
   navigation: any;
@@ -40,7 +41,19 @@ const HomeScreen: React.FC<HomeProps> = ({navigation}) => {
     setSearch('');
   }
 
-  const {isLoadingEvents, error, events} = useSelector((state: RootState) => state.events);  
+
+  const {isLoadingEvents, events, favorites} = useSelector((state: RootState) => state.events);  
+
+  const isFavorite = (event: Event): boolean =>{
+    return favorites.some((f) => f.id === event.id);
+  }
+
+    // this sort events to make favorite events render first 
+    const sortedEvents = [...events].sort((a, b) => {
+      const aFav = isFavorite(a) ? 1 : 0;
+      const bFav = isFavorite(b) ? 1 : 0;
+      return bFav - aFav;
+    });
 
   return (
     <SafeAreaView style={styles.container}>
@@ -66,7 +79,7 @@ const HomeScreen: React.FC<HomeProps> = ({navigation}) => {
       {
         isLoadingEvents? <Loader/> :
         <FlatList
-          data={events}
+          data={sortedEvents}
           keyExtractor={(item) => item.id}
           renderItem={({item})=><EventItem event={item} onPressEvent={(event)=>navigation.navigate('EventDetails',{
             event

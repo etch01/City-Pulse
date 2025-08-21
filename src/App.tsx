@@ -12,8 +12,9 @@ import {
 } from 'react-native';
 import { AppNavigator } from './navigation/AppNavigator';
 import { Provider } from 'react-redux';
-import store  from './redux/store';
+import store, { persistor }  from './redux/store';
 import { retrieveToken, saveToken, TokenCtx } from "./screens/Auth/token";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App(): React.JSX.Element {
   const [token, setToken] = React.useState<string>();
@@ -34,7 +35,9 @@ function App(): React.JSX.Element {
     <SafeAreaView style={styles.mainContainer}>
       <TokenCtx.Provider value={{ token, setToken, unsetToken }}>
         <Provider ref={null} store={store}>
-          <AppNavigator />
+          <PersistGate loading={null} persistor={persistor}>
+            <AppNavigator />
+          </PersistGate>
         </Provider>
       </TokenCtx.Provider>
     </SafeAreaView>

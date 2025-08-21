@@ -14,4 +14,10 @@ export const Icons = {
     back: {
       src: require("./icons/back.png")
     },
+    starFull: {
+      src: require("./icons/star-full.png")
+    },
+    starOutline: {
+      src: require("./icons/star-outline.png")
+    },
 }

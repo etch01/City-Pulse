@@ -85,5 +85,13 @@ export const styles = StyleSheet.create({
     typeTextActive:{
       color: colors.light,
       fontWeight: 500
+    },
+    favorite:{
+      position: 'absolute',
+      width:30,
+      height: 30,
+      bottom: 10,
+      right: 10,
+      zIndex: 100
     }
   });
