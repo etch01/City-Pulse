@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text, Pressable, Image, I18nManager, Button } from 'react-native';
+import { View, Text, Pressable, Image, I18nManager, Button, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { Header } from '../../components';
 import { Icons } from '../../assets/icons';
 import { useTranslation } from 'react-i18next';
 import { colors } from '../../theme/colors';
 import { LangCode } from '../../I18n/languageUtils';
-import i18next from 'i18next';
+import { removeToken } from '../Auth/token';
+
 import RNRestart from 'react-native-restart';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -16,7 +17,7 @@ type ProfileProps = {
 
 const Profile = ({ navigation }: ProfileProps) => {
   const { t, i18n } = useTranslation();
-
+  
   const languageSwitch = async() =>{
     const changeTo:LangCode = !I18nManager.isRTL? LangCode.ar: LangCode.en
     if(!I18nManager.isRTL){
@@ -28,6 +29,11 @@ const Profile = ({ navigation }: ProfileProps) => {
     }
     await AsyncStorage.setItem('appLanguage', changeTo);
     await i18n.changeLanguage(changeTo);
+    RNRestart.restart();
+  }
+
+  const logout = () =>{
+    removeToken();
     RNRestart.restart();
   }
 
@@ -64,10 +70,10 @@ const Profile = ({ navigation }: ProfileProps) => {
 
             </View>
             {/* Logout */}
-            <View style={styles.profileRow}>
+            <TouchableOpacity style={styles.profileRow} onPress={logout}>
                 <Image source={Icons.shutdown.src} style={styles.rowIcon}/>
                 <Text style={styles.rowText}>{t('profile.signout')}</Text>
-            </View>
+            </TouchableOpacity>
         </View>
       </View>
     </View>

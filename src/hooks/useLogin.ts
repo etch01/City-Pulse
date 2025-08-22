@@ -7,9 +7,7 @@ import {
   setBiometricEnabled,
 } from '../utils/biometrics';
 import { saveToken, removeToken } from '../screens/Auth/token';
-import { useNavigation, ParamListBase,  NavigationProp } from '@react-navigation/native';
 import { TokenCtx } from "../screens/Auth/token";
-import { Screen } from 'react-native-screens';
 
 export type LoginVM = ReturnType<typeof useLoginViewModel>;
 
@@ -22,7 +20,6 @@ export function useLoginViewModel() {
   const [biometricEnabled, setBiometricEnabledState] = useState(false);
   const [biometricLabel, setBiometricLabel] = useState('Login with Biometrics');
 
-  const navigation: NavigationProp<ParamListBase> = useNavigation();
   const  { setToken }  = useContext(TokenCtx);
 
   const canSubmit = useMemo(

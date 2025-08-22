@@ -12,9 +12,9 @@ import {
 import { useLoginViewModel } from '../../../hooks/useLogin';
 import { styles } from './styles'
 import { colors } from "../../../theme/colors";
-import { useTranslation } from "react-i18next";
 
 const LoginScreen = () => {
+
   const {
     email,
     password,
@@ -25,8 +25,6 @@ const LoginScreen = () => {
     handleLogin,
     handleBiometricLogin,
   } = useLoginViewModel();
-
-  const { t } = useTranslation();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -39,14 +37,14 @@ const LoginScreen = () => {
         />
 
         {/* Welcome Text */}
-        <Text style={styles.title}>{t('auth.welcome')}</Text>
-        <Text style={styles.subtitle}>{t('auth.loginTitle')}</Text>
+        <Text style={styles.title}>Welcome Back</Text>
+        <Text style={styles.subtitle}>Login to your account</Text>
 
         {/* Email Input */}
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder={t('auth.emailPlaceholder')}
+            placeholder={"Email"}
             placeholderTextColor={colors.placeholder}
             value={email}
             onChangeText={setEmail}
@@ -59,7 +57,7 @@ const LoginScreen = () => {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder={t('auth.passwordPlaceholder')}
+            placeholder={"Password"}
             placeholderTextColor={colors.placeholder}
             value={password}
             onChangeText={setPassword}
@@ -77,21 +75,21 @@ const LoginScreen = () => {
           disabled={loading}
         >
           <Text style={styles.buttonText}>
-            {loading ? t('auth.loginLoadingText') : t('auth.login')}
+            {loading ? "Logging in..." : "Login"}
           </Text>
         </TouchableOpacity>
 
         {/* Sign Up */}
         <View style={styles.footer}>
-          <Text style={styles.footerText}>{t('auth.dontHaveAccount')}</Text>
+          <Text style={styles.footerText}>Don’t have an account?</Text>
           <TouchableOpacity>
-            <Text style={styles.footerLink}>{t('auth.signup')}</Text>
+            <Text style={styles.footerLink}>Sign up</Text>
           </TouchableOpacity>
         </View>
 
         {/* Biometrics Button */}
         <TouchableOpacity onPress={handleBiometricLogin} style={{ marginTop: 20 }}>
-          <Text style={styles.footerLink}>{t('auth.useBiometrics')}</Text>
+          <Text style={styles.footerLink}>Use Biometrics</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
