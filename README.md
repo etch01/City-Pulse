@@ -2,21 +2,20 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+>**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.```
 
-## Step 1: Start the Metro Server
+## Step 1: Install node modules and cocoa pods
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
+# using Yarn
 
 ```bash
-# using npm
-npm start
+yarn install && npx pod-install
 
-# OR using Yarn
-yarn start
+# Or try
+yarn install && cd ios && pod install && cd ..
+
 ```
+
 
 ## Step 2: Start your Application
 
