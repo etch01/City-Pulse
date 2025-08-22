@@ -45,4 +45,7 @@ If everything is set up _correctly_, you should see your new app running in your
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-![Alt text](/screenshots/ios1.png?raw=true "Optional Title")
+![Alt text](/screenshots/ios1.png?raw=true "Home Screen")
+![Alt text](/screenshots/ios2.png?raw=true "Profile Screen")
+![Alt text](/screenshots/ios3.png?raw=true "Event Details")
+![Alt text](/screenshots/ios4.png?raw=true "Login Screen")
