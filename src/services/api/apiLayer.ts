@@ -11,6 +11,7 @@ export class NetworkLayer {
   //Secure Get Request use then callback to get the resolved promise
   get_request = (endpoint:string) => {
     const url = this.API_HOST + endpoint;
+    
     return new Promise(function (resolve, reject) {
       try {
         let source = axios.CancelToken.source();
